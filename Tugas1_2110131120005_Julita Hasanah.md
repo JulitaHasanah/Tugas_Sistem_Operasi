@@ -2,7 +2,6 @@
 
     Nim : 2110131120005
 
-#
 
 ## Device name DESKTOP-P33IR58
 
@@ -21,7 +20,6 @@
 - **OS build** 19044.1165
 - **Experience** Windows Feature Experience Pack 120.- 2212.3530.0
 
-#
 
 ## SEJARAH PERKEBANGAN DARI MASA KE MASA
 
