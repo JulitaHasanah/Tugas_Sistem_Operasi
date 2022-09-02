@@ -33,7 +33,7 @@
   > Hardware adalah suatu komponen yang ada pada komputer yang bisa dilihat secara kasat mata dan mampu disentuh secara fisik. Fungsi hardware sendiri untuk mendukung kinerja komputer, sebagai pengolah data, dan menampilkan input proses. Contoh : hardware yaitu CPU, keyboard, mouse, printer, dll. <br> <br>
   > Sedangkan software adalah suatu bagian dari sistem komputer yang tidak memiliki wujud fisik dan tidak terlihat karena merupakan sekumpulan data elektronik yang disimpan dan diatur oleh komputer berupa program yang dapat menjalankan suatu perintah. Contoh : Microsoft Office Word, Microsoft Office Excel, MYOB, OpenOffice.org, dan lainnya.
 
-## SEJARAH PERKEBANGAN DARI MASA KE MASA
+## SEJARAH PERKEBANGAN KOMPUTER DARI MASA KE MASA
 
 ## Awal Penemuan Komputer
 
