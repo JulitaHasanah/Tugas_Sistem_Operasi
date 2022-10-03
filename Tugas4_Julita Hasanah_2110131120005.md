@@ -5,19 +5,16 @@
 
 <h1 align="center"><b>Struktur Sistem Operasi</b></h1>
 
-<p align="justify">Sebuah sistem yang besar dan kompleks seperti sistem operasi modern harus diatur dengan cara membagi task kedalam komponen-komponen kecil agar dapat berfungsi dengan baik dan mudah dimodifikasi. Pada bab ini, kita akan membahas cara komponen-komponen ini dihubungkan satu sama lain. Menurut Silberschatz dan kawan-kawan, ada tiga cara yaitu:</p>
-
-- Struktur Sederhana.
-- Pendekatan Berlapis.
-- Kernel Mikro.
+<p align="justify">Sebuah sistem yang besar dan kompleks seperti sistem operasi modern harus diatur dengan cara membagi task kedalam komponen-komponen kecil agar dapat berfungsi dengan baik dan mudah dimodifikasi. Pada bab ini, kita akan membahas cara komponen-komponen ini dihubungkan satu sama lain.</p>
 
 <br>
 
 ## **Struktur Sederhana**
 
-<p align="justify">Pada struktur ini, sistem operasi komputer dibuat dari sekumpulan prosedur, yang mana setiap prosedur itu dapat memanggil prosedur yang lainnya, kapan pun prosedur di perlukan. Pada struktur sederhana tidak ada pemisahan yang jelas antara aplikasi dan sistem operasi akibatnya program-program malware mudah memodifikasi dan merusak sistem operasi. Program aplikasi memiliki akses untuk memodifikasi bagian sistem operasi</p><br>
+<p align="justify">Pada struktur ini, sistem operasi komputer dibuat dari sekumpulan prosedur, yang mana setiap prosedur itu dapat memanggil prosedur yang lainnya, kapan pun prosedur di perlukan. Pada struktur sederhana tidak ada pemisahan yang jelas antara aplikasi dan sistem operasi akibatnya program-program malware mudah memodifikasi dan merusak sistem operasi. Program aplikasi memiliki akses untuk memodifikasi bagian sistem operasi.</p><br>
 
 <p align="center"><img width="600px" src="gambarT4/1.jpg"><br></p>
+<p align="center">Gambar 1 Struktur Monolitic</P>
 
 Penjelasan lapisan gambar di atas
 
@@ -30,6 +27,9 @@ Penjelasan lapisan gambar di atas
 Contoh Sistem operasi yang menggunakan struktur ini adalah : UNIX , MS-DOS
 
 <p align="center"><img width="800px" src="gambarT4/2.png"><br></p>
+<p align="center">Gambar 2 Struktur MS-DOS dan Struktur UNIX</P>
+
+<p align="justify">MS-DOS, UNIX awalnya dibatasi oleh fungsionalitas perangkat keras. Ini terdiri dari dua bagian yang dapat dipisahkan: kernel dan program sistem. Kernel selanjutnya dipisahkan menjadi serangkaian antarmuka dan driver perangkat, yang telah ditambahkan dan diperluas selama bertahun-tahun seiring perkembangan UNIX. Kita dapat melihat sistem operasi UNIX tradisional sebagai berlapis sampai batas tertentu, seperti yang ditunjukkan pada Gambar diatas Segala sesuatu di bawah antarmuka panggilan sistem dan di atas perangkat keras fisik adalah kernel. Kernel menyediakan sistem file, penjadwalan CPU, manajemen memori, dan fungsi sistem operasi lainnya melalui panggilan sistem. Singkatnya, itu adalah sejumlah besar fungsi untuk digabungkan menjadi satu tingkat. Struktur monolitik ini sulit untuk diterapkan dan dipelihara. Namun, ia memiliki keunggulan kinerja yang berbeda: hanya ada sedikit overhead di antarmuka panggilan sistem atau dalam komunikasi di dalam kernel. Kami masih melihat bukti struktur monolitik sederhana ini di sistem operasi UNIX, Linux, dan Windows.</p><br>
 
 ### **Keunggunlan**
 
@@ -46,57 +46,18 @@ Contoh Sistem operasi yang menggunakan struktur ini adalah : UNIX , MS-DOS
 
 ## **Sistem Berlapis (Layered)**
 
-<p align="justify">Sistem operasi dibentuk secara hirarki berdasar lapisan — lapisan, dimana lapisan-lapisan bawa memberi layanan lapisan lebih atas. Lapisan yang paling bawah adalah bertugas menanngani ditil operasi perangkat keras dan yang paling tinggi menangani user- interface atau aplikasi.Rutin-rutin pada suatu lapisan hanya boleh menggunakan rutin-rutin lapisan bawahnya. Sebuah lapisan adalah implementasi dari obyek abstrak yang merupakan enkapsulasi dari data dan operasi yang bisa memanipulasi data tersebut. Struktur berlapis dimaksudkan untuk mengurangi kompleksitas rancangan dan implementasi sistem operasi. Contoh sistem operasi yang menggunakan sistem ini adalah: UNIX termodifikasi, THE, Venus dan OS/2.</p
+<p align="justify">Dengan dukungan perangkat keras yang tepat, sistem operasi dapat dipecah menjadi bagian-bagian yang lebih kecil dan lebih sesuai daripada yang diizinkan oleh sistem MS-DOS dan UNIX asli. Sistem operasi dibentuk secara hirarki berdasar lapisan — lapisan, dimana lapisan-lapisan bawah memberi layanan lapisan lebih atas. Lapisan yang paling bawah adalah bertugas menanngani ditil operasi perangkat keras dan yang paling tinggi menangani user- interface atau aplikasi.Rutin-rutin pada suatu lapisan hanya boleh menggunakan rutin-rutin lapisan bawahnya. Sebuah lapisan adalah implementasi dari obyek abstrak yang merupakan enkapsulasi dari data dan operasi yang bisa memanipulasi data tersebut. Struktur berlapis dimaksudkan untuk mengurangi kompleksitas rancangan dan implementasi sistem operasi. Contoh sistem operasi yang menggunakan sistem ini adalah: UNIX termodifikasi, THE, Venus dan OS/2.<br><br></p>
 
-**Sistem Berlapis Tanenbaum**<br>
-<img width="450px" src="gambarT4/3.png"><br>
-<br>
-Menurut Tanenbaum dan Woodhull sistem berlapis terdiri dari enam lapisan, yaitu:
-
-- **Lapisan 0**.Mengatur alokasi prosesor pertukaran antar proses ketika interupsi terjadi atau waktu habis.Lapisan ini mendukung dasar multi-programming pada CPU.
-
-- **Lapisan 1**.Mengalokasikan ruang untuk proses di memori utama dan pada 512 kilo word drum yang digunakan untuk menahan bagian proses ketika tidak ada ruang dimemori utama.
-
-- **Lapisan 2**.Menangani komunikasi antara masing-masing proses dan operator console.Pada lapisin imasing-masing proses secara efektif memiliki opertor console sendiri.
-
-- **Lapisan 3**. Mengatur peranti M/K dan menampung informasi yang mengalir dari dan ke proses tersebut.
-
-- **Lapisan 4**. Tempat program pengguna. Pengguna tidak perlu memikirkan tentang proses, memori, console, atau manajemen M/K.
-
-- **Lapisan 5**. Merupakan operator sistem.
-
-<br><br>
-
-**Stallings memberi model yang lebih detail, sabagai berikut :**
-
-- **Lapisan 1**. Berisi berbagai sirkuit elektronik, misalnya register , memory cells, dan logic gate.
-- **Lapisan 2**. Berisi instruksi prosesor,misal instruksi aritmatika, instruksi transfer data,dsb.
-- **Lapisan 3**. Penambahan konsep seperti prosedur/subrutin, maupun fungsi yang me-return nilai tertentu.
-- **Lapisan 4**. Pemnambahan interrupt.
-- **Lapisan 5**. Program sebagai sekumpulan instruksi yang dijalankan oleh prosesor.
-- **Lapisan 6**. Berhubungan dengan secondary storage device, yaitu membaca/menulis head, track, dansektor.
-- **Lapisan 7**. Menciptakan alamat logika untuk proses. Mengatur hubungan antara main memory,virtual memory,dan secondary memory.
-- **Lapisan 8**. Program sebagai sekumpulan instruksi yang dijalankan oleh prosesor.
-- **Lapisan 9**. Berhubungan dengan secondary storage device, yaitu membaca/menulis head, track, dansektor.
-- **Lapisan 10**. Menciptakan alamat logika untuk proses. Mengatur hubungan antara main memory,virtual memory,dan secondary memory.
-- **Lapisan 11**. Program sebagai sekumpulan instruksi yang dijalankan oleh prosesor.
-- **Lapisan 12**. File adalah objek yang memiliki nama dan ukuran.Abstraksi dari lapisan 9.
-- **Lapisan 13**. Menyediakan interface agar bisa berinteraksi dengan pengguna.
+<p align="center"><img width="450px" src="gambarT4/7.png"></p>
+<p align="center">Gambar 3 Sistem Operasi Berlapis.</p>
 
 <br>
 
-**Sistem Berlapis Stallings**<br>
-<img width="450px" src="gambarT4/4.webp"><br>
-<br>
-
-Dapat disimpulkan bahwa lapisan sistem operasi secara umum terdiri atas empat bagian, yaitu :
-
-1. **Perangkat keras**. Lebih berhubungan kepada perancang sistem. Lapisan ini mencakup lapisan 0 dan 1 menurut Tanenbaum, dan level 1 sampai dengan leve l3 menurut Stallings.
-2. **Sistem operasi**. Lebih berhubungan kepada programer. Lapisan ini mencakup lapisan 2 menurut Tanenbaum, dan level 5 sampai dengan level 7 menurut Stallings.
-3. **Kelengkapan**. Lebih berhubungan kepada programer. Lapisan ini mencakup lapisan 3 menurut Tanenbaum, dan level 8 sampai dengan level 11 menurut Stallings.
-4. **Program aplikasi**. Lebih berhubungan kepada pengguna aplikasi komputer. Lapisan ini mencakup lapisan 4 dan lapisan 5 menurut Tanebaum, dan level 12 dan level 13 menurut Stallings.
-
-<br>
+<p align="justify">Lapisan sistem operasi adalah implementasi dari objek abstrak yang terdiri dari data dan operasi yang dapat memanipulasi data tersebut.<br><br>
+Keuntungan utama dari pendekatan berlapis adalah kesederhanaan konstruksi dan debugging. Setiap lapisan diimplementasikan hanya dengan operasi yang disediakan oleh lapisan tingkat yang lebih rendah. Sebuah layer tidak perlu mengetahui bagaimana operasi ini diimplementasikan; ia hanya perlu mengetahui apa yang dilakukan operasi-operasi ini. Oleh karena itu, setiap lapisan menyembunyikan keberadaan struktur data, operasi, dan perangkat keras tertentu dari lapisan tingkat yang lebih tinggi.<br><br>
+Kesulitan utama dengan pendekatan berlapis melibatkan tepat mendefinisikan berbagai lapisan. Karena sebuah lapisan hanya dapat menggunakan lapisan tingkat yang lebih rendah, perencanaan yang cermat diperlukan. Misalnya, driver perangkat untuk penyimpanan cadangan (ruang disk yang digunakan oleh algoritme memori virtual) harus berada pada tingkat yang lebih rendah daripada rutinitas manajemen memori, karena manajemen memori memerlukan kemampuan untuk menggunakan penyimpanan cadangan.<br><br>
+Masalah terakhir dengan implementasi berlapis adalah bahwa mereka cenderung kurang efisien daripada jenis lainnya. Misalnya, ketika program pengguna menjalankan operasi I/O, program tersebut mengeksekusi panggilan sistem yang terperangkap ke lapisan I/O, yang memanggil lapisan manajemen memori, yang pada gilirannya memanggil lapisan penjadwalan CPU, yang kemudian diteruskan ke perangkat keras. Pada setiap lapisan, parameter dapat dimodifikasi, data mungkin perlu diteruskan, dan seterusnya. Setiap lapisan menambahkan overhead ke panggilan sistem. Hasil akhirnya adalah panggilan sistem yang membutuhkan waktu lebih lama daripada yang dilakukan pada sistem tidak berlapis.<br><br>
+Keterbatasan ini telah menyebabkan reaksi kecil terhadap layering dalam beberapa tahun terakhir. Lebih sedikit lapisan dengan lebih banyak fungsionalitas sedang dirancang, memberikan sebagian besar keuntungan dari kode termodulasi sambil menghindari masalah definisi lapisan dan interaksi.</p><br>
 
 ### **Lapisan Sistem Operasi Secara Umum**<br>
 
@@ -120,8 +81,16 @@ Dapat disimpulkan bahwa lapisan sistem operasi secara umum terdiri atas empat ba
 ## **Kernel Mikro**
 
 <p align="justify">Mikrokernel adalah inti OS kecil yang menyediakan dasar untuk modular extensesi. Metode ini menyusun sistem operasi dengan menghapus semua komponen yang tidak esensial dari kernel, dan mengimplementasikannya sebagai program sistem dan level pengguna. Hasilnyakernelyang lebih kecil. Pada umumnya mikrokernel mendukung proses dan menagemen memori yang minimal, sebagai tambahan utnuk fasilitas komunikasi.<br><br>
-Fungsi utama mikrokernel adalah mendukung fasilitas komunikasi antara program klien dan bermacam-macam layanan yang juga berjalan diuser space. Komunikasi yang dilakukan secara tidak langsung, didukung oleh sistem message passing, dengan bertukar pesan melalui mikrokernel.</p>
+Fungsi utama mikrokernel adalah mendukung fasilitas komunikasi antara program klien dan bermacam-macam layanan yang juga berjalan diuser space. Komunikasi yang dilakukan secara tidak langsung, didukung oleh sistem message passing, dengan bertukar pesan melalui mikrokernel.<br><br>
+Kita telah melihat bahwa ketika UNIX berkembang, kernel menjadi besar dan sulit untuk dikelola. Pada pertengahan 1980-an, para peneliti di Carnegie Mellon University mengembangkan sistem operasi yang disebut Mach yang memodulasi kernel menggunakan pendekatan mikrokernel. Metode ini menyusun sistem operasi dengan menghapus semua komponen yang tidak penting dari kernel dan mengimplementasikannya sebagai sistem dan program tingkat pengguna. Hasilnya adalah kernel yang lebih kecil. Ada sedikit konsensus mengenai layanan mana yang harus tetap berada di kernel dan mana yang harus diimplementasikan di ruang pengguna. Biasanya, bagaimanapun, mikrokernel menyediakan proses minimal dan manajemen memori, selain fasilitas komunikasi. Gambar 4 mengilustrasikan arsitektur mikrokernel tipikal.</p>
 <br>
+
+<p align="center"><img width="450px" src="gambarT4/8.png"></p>
+<p align="center">Gambar 4 Arsitektur mikrokernel tipikal.</p>
+
+<br>
+
+<p align="justify">Salah satu manfaat dari pendekatan mikrokernel adalah membuat perluasan sistem operasi menjadi lebih mudah. Semua layanan baru ditambahkan ke ruang pengguna dan akibatnya tidak memerlukan modifikasi kernel. Ketika kernel memang harus dimodifikasi, perubahannya cenderung lebih sedikit, karena mikrokernel adalah kernel yang lebih kecil. Sistem operasi yang dihasilkan lebih mudah untuk dipindahkan dari satu desain perangkat keras ke desain perangkat keras lainnya. Mikrokernel juga memberikan lebih banyak keamanan dan keandalan, karena sebagian besar layanan berjalan sebagai proses pengguna—bukan kernel. Jika layanan gagal, sisa sistem operasi tetap tidak tersentuh.<br></p><br>
 
 ### **Keuntungan**
 
